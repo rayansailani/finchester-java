@@ -121,12 +121,11 @@ public class UserController {
 
     var userDto = new UserDTO(userData.getId(), userData.getFullname(),
     userData.getFullname(),
-    userData.getEmail(), userData.getMobile());
-    if (!userData.getRole().equals("ROLE_ADMIN")) {
-    map.put("partnerId", userData.getPartner().getId());
-    }
+    userData.getEmail(), userData.getMobile());  
     map.put("role", userData.getRole());
+    map.put("partnerId", userData.getPartner().getId());
     map.put("user", userDto);
+    map.put("partnerName", userData.getPartner().getName());
     map.put("token", token);
     }
     return new ResponseEntity<>(map, HttpStatus.OK);

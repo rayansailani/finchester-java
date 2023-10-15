@@ -59,15 +59,15 @@ public class AdminController {
 
     // update Partner config
     @PostMapping("/update-config")
-    public ResponseEntity<?> savePartnerConfig(@RequestBody Partner partner) {
+    public ResponseEntity<?> savePartnerConfig() {
         // if(partner.getId() == null){
         // throw new ResourceNotFound("Partner did not exists");
         // }
-        var res = adminService.savePartnerConfig(partner);
-        if (res == null) {
-            return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Partner config did not saved");
-        }
-        return ResponseEntity.status(HttpStatus.OK).body(res);
+        // var res = adminService.savePartnerConfig(partner);
+        // if (res == null) {
+        //     return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body("Partner config did not saved");
+        // }
+        return ResponseEntity.status(HttpStatus.OK).body("res");
     }
 
 
@@ -102,7 +102,7 @@ public class AdminController {
             throw new ResourceNotFound(
                     "Fullname, Username, Email, Mobile, Password, Role, isAuthorized, Gender and Partner id are mandatory fields");
         }
-        utils.checkUserUniqueFields(user);
+        // utils.checkUserUniqueFields(user);
         if (user.getId() != null) {
             var res = adminService.partnerSignup(partnerId, user);
             if (res == null) {

@@ -35,7 +35,7 @@ public class User {
 	@JsonDeserialize(using = TrimStringDeserializer.class)
 	private String fullname;
 
-	@JsonDeserialize(using = TrimStringDeserializer.class)
+	// @JsonDeserialize(using = TrimStringDeserializer.class)
 	private String username;
 
 	@JsonDeserialize(using = TrimStringDeserializer.class)

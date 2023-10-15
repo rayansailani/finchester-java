@@ -23,26 +23,25 @@ public class BankController {
     @PostMapping("/loan/{partnerId}/{userId}/create-bank/{profileId}")
     public ResponseEntity<?> createLoan(@PathVariable("partnerId") Long partnerId, @PathVariable("userId") Long userId,
             @PathVariable("profileId") Long profileId, @RequestBody Bank bank) {
-        // if (bank.getAadhaarNo() == null || bank.getAccountNo() == null || bank.getAccountType() == null
-        //         || bank.getIfscCode() == null || bank.getPanNo() == null) {
-        //     throw new ResourceNotFound(
-        //             "Account no, aadhaar no, pan no, ifsc code and account type are required fields");
-        // }
-        // if (bank.getId() != null) {            
-        //     var res = bankService.createBank(partnerId, userId, profileId, bank);
-        //     if (res == null) {
-        //         throw new DataNotSaved("Bank details not updated");
-        //     }
-        //     return ResponseEntity.status(HttpStatus.OK).body(res);
-        // } else {
-            
-        //     var res = bankService.createBank(partnerId, userId, profileId, bank);
-        //     if (res == null) {
-        //         throw new DataNotSaved("Bank details could not be saved");
-        //     }
-        //     return ResponseEntity.status(HttpStatus.CREATED).body(res);
-        // }
-        return ResponseEntity.status(HttpStatus.CREATED).body("res");
+        if (bank.getAadhaarNo() == null || bank.getAccountNo() == null || bank.getAccountType() == null
+                || bank.getIfscCode() == null || bank.getPanNo() == null) {
+            throw new ResourceNotFound(
+                    "Account no, aadhaar no, pan no, ifsc code and account type are required fields");
+        }
+        if (bank.getId() != null) {            
+            var res = bankService.createBank(partnerId, userId, profileId, bank);
+            if (res == null) {
+                throw new DataNotSaved("Bank details not updated");
+            }
+            return ResponseEntity.status(HttpStatus.OK).body(res);
+        } else {            
+            var res = bankService.createBank(partnerId, userId, profileId, bank);
+            if (res == null) {
+                throw new DataNotSaved("Bank details could not be saved");
+            }
+            return ResponseEntity.status(HttpStatus.CREATED).body(res);
+        }
+        // return ResponseEntity.status(HttpStatus.CREATED).body("res");
     }
 
 }

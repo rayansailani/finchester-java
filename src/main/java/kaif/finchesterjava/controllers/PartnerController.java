@@ -39,16 +39,19 @@ public class PartnerController {
 
     @PostMapping("/partner/{partnerId}/createUser")
     public ResponseEntity<?> partnerSignup(@PathVariable("partnerId") Long partnerId, @RequestBody User user) {
-        if (utils.isStringNullOrEmpty(user.getFullname()) || utils.isStringNullOrEmpty(user.getUsername()) ||
-                utils.isStringNullOrEmpty(user.getEmail()) || utils.isLongNullOrEmpty(user.getMobile()) ||
-                utils.isStringNullOrEmpty(user.getPassword()) || utils.isStringNullOrEmpty(user.getRole()) ||
-                utils.isBoolNullOrEmpty(user.getIsAuthorized()) || utils.isStringNullOrEmpty(user.getGender())
-                || utils.isLongNullOrEmpty(partnerId)) {
+        if (utils.isStringNullOrEmpty(user.getFullname()) || 
+        utils.isStringNullOrEmpty(user.getUsername())  ||
+                utils.isStringNullOrEmpty(user.getEmail()) || 
+                utils.isLongNullOrEmpty(user.getMobile()) ||
+                utils.isStringNullOrEmpty(user.getPassword()) ||
+                utils.isBoolNullOrEmpty(user.getIsAuthorized()) ||
+                 utils.isStringNullOrEmpty(user.getGender())|| 
+                 utils.isLongNullOrEmpty(partnerId)) {
             throw new ResourceNotFound(
-                    "Fullname, Username, Email, Mobile, Password, Role, isAuthorized, Gender and Partner id are mandatory fields");
+                    "Fullname, Username, Email, Mobile, Password,  isAuthorized, Gender and Partner id are mandatory fields");
         }
 
-        utils.checkUserUniqueFields(user);
+        // utils.checkUserUniqueFields(user);
         if (user.getId() != null) {
             var res = partnerService.userSignup(partnerId, user);
             if (res == null) {
@@ -63,6 +66,5 @@ public class PartnerController {
             return ResponseEntity.status(HttpStatus.CREATED).body(res);
         }
     }
-
 
 }

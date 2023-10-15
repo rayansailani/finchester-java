@@ -152,21 +152,19 @@ public class AdminService {
 	// }
 
 	public Partner savePartner(Partner partner) {
-		if (partner.getId() != null) {
-			Partner existingPartner = partnerRepo.findById(partner.getId()).get();
-			partner.setId(partner.getId());
-			partner.setName(partner.getName());
-			partner.setMobile(partner.getMobile());
-			partner.setEmail(partner.getEmail());
-			partner.setConfig(existingPartner.getConfig());
-			partner.setUser(existingPartner.getUser());
-			partner.setProfile(existingPartner.getProfile());
-			partner.setLoan(existingPartner.getLoan());
-			partner.setBank(existingPartner.getBank());
-		}
-
+		// if (partner.getId() != null) {
+		// 	Partner existingPartner = partnerRepo.findById(partner.getId()).get();
+		// 	partner.setId(partner.getId());
+		// 	partner.setName(partner.getName());
+		// 	partner.setMobile(partner.getMobile());
+		// 	partner.setEmail(partner.getEmail());
+		// 	partner.setConfig(existingPartner.getConfig());
+		// 	partner.setUser(existingPartner.getUser());
+		// 	partner.setProfile(existingPartner.getProfile());
+		// 	partner.setLoan(existingPartner.getLoan());
+		// 	partner.setBank(existingPartner.getBank());
+		// }
 		return this.partnerRepo.save(partner);
-
 	}
 
 	// update Partner config

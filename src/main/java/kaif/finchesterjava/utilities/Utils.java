@@ -123,15 +123,15 @@ public class Utils {
             List<User> filteredList = userList.stream().filter(ele -> !ele.getId().equals(user.getId()))
                     .collect(Collectors.toList());
 
-            Boolean usernameExists = filteredList.stream()
-                    .anyMatch(ele -> ele.getUsername().equalsIgnoreCase(user.getUsername()));
+            // Boolean usernameExists = filteredList.stream()
+            //         .anyMatch(ele -> ele.getUsername().equalsIgnoreCase(user.getUsername()));
             Boolean mobileExists = filteredList.stream().anyMatch(ele -> ele.getMobile().equals(user.getMobile()));
             Boolean emailExists = filteredList.stream()
                     .anyMatch(ele -> ele.getEmail().equalsIgnoreCase(user.getEmail()));
 
-            if (usernameExists) {
-                throw new FieldAlreadyExist("Username already exists");
-            }
+            // if (usernameExists) {
+            //     throw new FieldAlreadyExist("Username already exists");
+            // }
 
             if (mobileExists) {
                 throw new FieldAlreadyExist("Mobile already exists");
